@@ -1,0 +1,34 @@
+<form [formGroup]="cadastroForm" class="form-validate mb-3" novalidate=""
+    (submit)="submitForm($event, cadastroForm.value)">
+
+    <h1>Cadastro</h1>
+
+    <div class="form-group col-6">
+        <label class="control-label">Informe a quantidade de parcelas :</label>
+        <input class="form-control" name="Parcela" [formControl]="cadastroForm.controls['Parcela']"
+            formControlName="Parcela" required="" type="number"/>
+        <span class="text-danger"
+            *ngIf="cadastroForm.controls['Parcela'].hasError('required') && (cadastroForm.controls['Parcela'].dirty || cadastroForm.controls['Parcela'].touched)">Campo
+            Obrigatório</span>
+        <span class="text-danger"
+            *ngIf="cadastroForm.controls['Parcela'].hasError('min') && (cadastroForm.controls['Parcela'].dirty || cadastroForm.controls['Parcela'].touched)">Valor
+            mínimo é 0</span>
+    </div>
+
+    <div class="form-group col-6">
+
+        <label class="control-label">Informe o valor :</label>
+        <input class="form-control" name="Valor" [formControl]="cadastroForm.controls['Valor']" formControlName="Valor"
+            required="" type="number"/>
+        <span class="text-danger"
+            *ngIf="cadastroForm.controls['Valor'].hasError('required') && (cadastroForm.controls['Valor'].dirty || cadastroForm.controls['Valor'].touched)">Campo
+            Obrigatório</span>
+        <span class="text-danger"
+            *ngIf="cadastroForm.controls['Valor'].hasError('min') && (cadastroForm.controls['Valor'].dirty || cadastroForm.controls['Valor'].touched)">Valor
+            mínimo é 0</span>
+    </div>
+
+    <div class="form-group col-6">
+        <button class="btn btn-primary mt-3">Calcular</button>
+    </div>
+</form>
